@@ -16,4 +16,17 @@ feature 'Auth' do
     expect(page).to have_content("user@example.com")
   end
 
+  scenario 'User gets redirected to home screen once registered' do
+    visit '/'
+
+    click_on 'Register'
+
+    fill_in "Name", with: "User"
+    fill_in "Email", with: "User@example.com"
+    fill_in "Password", with: "password"
+    fill_in "Confirm", with: "password"
+
+    expect(page).to have_content("user@example.com")
+  end
+
 end
